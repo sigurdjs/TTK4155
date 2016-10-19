@@ -3,23 +3,25 @@ Byggern.elf:     file format elf32-avr
 
 Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
-  0 .text         00000090  00000000  00000000  00000054  2**1
+  0 .text         0000009c  00000000  00000000  00000054  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  1 .comment      00000030  00000000  00000000  000000e4  2**0
+  1 .comment      00000030  00000000  00000000  000000f0  2**0
                   CONTENTS, READONLY
-  2 .debug_aranges 00000020  00000000  00000000  00000114  2**0
+  2 .debug_aranges 00000030  00000000  00000000  00000120  2**0
                   CONTENTS, READONLY, DEBUGGING
-  3 .debug_info   00000087  00000000  00000000  00000134  2**0
+  3 .debug_info   000000fc  00000000  00000000  00000150  2**0
                   CONTENTS, READONLY, DEBUGGING
-  4 .debug_abbrev 00000053  00000000  00000000  000001bb  2**0
+  4 .debug_abbrev 000000be  00000000  00000000  0000024c  2**0
                   CONTENTS, READONLY, DEBUGGING
-  5 .debug_line   000000b1  00000000  00000000  0000020e  2**0
+  5 .debug_line   000000dc  00000000  00000000  0000030a  2**0
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_frame  00000024  00000000  00000000  000002c0  2**2
+  6 .debug_frame  00000044  00000000  00000000  000003e8  2**2
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_str    00000104  00000000  00000000  000002e4  2**0
+  7 .debug_str    00000126  00000000  00000000  0000042c  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_ranges 00000010  00000000  00000000  000003e8  2**0
+  8 .debug_loc    00000021  00000000  00000000  00000552  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_ranges 00000020  00000000  00000000  00000573  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -61,24 +63,38 @@ Disassembly of section .text:
   76:	d4 e0       	ldi	r29, 0x04	; 4
   78:	de bf       	out	0x3e, r29	; 62
   7a:	cd bf       	out	0x3d, r28	; 61
-  7c:	0e 94 44 00 	call	0x88	; 0x88 <main>
-  80:	0c 94 46 00 	jmp	0x8c	; 0x8c <_exit>
+  7c:	0e 94 48 00 	call	0x90	; 0x90 <main>
+  80:	0c 94 4c 00 	jmp	0x98	; 0x98 <_exit>
 
 00000084 <__bad_interrupt>:
   84:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
 
-00000088 <main>:
+00000088 <uart_send_char>:
+#include "util/delay.h"
+#include <avr/io.h>
+
+// Return value of -1 equals failure/error.
+void uart_send_char(char c) {
+	loop_until_bit_is_set(UCSR0A,UDRE0);
+  88:	5d 9b       	sbis	0x0b, 5	; 11
+  8a:	fe cf       	rjmp	.-4      	; 0x88 <uart_send_char>
+	UDR0 = c;
+  8c:	8c b9       	out	0x0c, r24	; 12
+  8e:	08 95       	ret
+
+00000090 <main>:
 
 int main(void)
 {
     while(1)
     {
-		set_bit(PORTA,PA0);
-  88:	d8 9a       	sbi	0x1b, 0	; 27
-  8a:	fe cf       	rjmp	.-4      	; 0x88 <main>
+		uart_send_char('a');
+  90:	81 e6       	ldi	r24, 0x61	; 97
+  92:	0e 94 44 00 	call	0x88	; 0x88 <uart_send_char>
+  96:	fc cf       	rjmp	.-8      	; 0x90 <main>
 
-0000008c <_exit>:
-  8c:	f8 94       	cli
+00000098 <_exit>:
+  98:	f8 94       	cli
 
-0000008e <__stop_program>:
-  8e:	ff cf       	rjmp	.-2      	; 0x8e <__stop_program>
+0000009a <__stop_program>:
+  9a:	ff cf       	rjmp	.-2      	; 0x9a <__stop_program>
