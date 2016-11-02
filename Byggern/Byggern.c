@@ -1,41 +1,62 @@
 /*
- * Byggern.c
+ * main.c
  *
  * Created: 19.10.2016 18:52:31
  *  Author: sigurdjs
  */ 
 
-#define set_bit( reg, bit ) (reg |= (1 << bit))
-#define clear_bit( reg, bit ) (reg &= ~(1 << bit))
-#define test_bit( reg, bit ) (reg & (1 << bit))
-#define loop_until_bit_is_set( reg, bit ) while( !test_bit(reg,bit))
-#define loop_until_bit_is_clear( reg, bit ) while( test_bit( reg, bit ))
-
-#define F_CPU 16000000 // clock frequency in Hz
-
-#include "util/delay.h"
+#include "setup.h"
 #include <avr/io.h>
+#include <stdio.h>
+#include "uart.h"
 
-FILE uart_output = FDEV_SETUP_STREAM(uart_putchar, NULL, _FDEV_SETUP_WRITE);
-FILE uart_input = FDEV_SETUP_STREAM(NULL, uart_getchar, _FDEV_SETUP_READ);
+void SRAM_test(void) {
+	//Start address for the SRAM
+	volatile char *ext_ram = (char *) 0x1800;
 
-void uart_send_char(char c, FILE *stream) {
-	if (c == '\n') {
-		uart_send_char('\r');
+	uint16_t i, werrors, rerrors;
+	werrors = 0;
+	rerrors = 0;
+	unsigned char testvalue;
+
+	printf("Starting SRAM test...\r\n");
+
+	for (i = 0; i < 0x800; i++) {
+		testvalue = ~(i % 256);
+		ext_ram[i] = testvalue;
+		if (ext_ram[i] != testvalue) {
+			printf("SRAM error (write phase): ext_ram[%d] = %02X (should be %02X)\r\n", i, ext_ram[i], testvalue);
+			werrors++;
+		}
 	}
-	loop_until_bit_is_set(UCSR0A,UDRE0);
-	UDR0 = c;
-} 
 
-char uart_recieve_char(FILE *stream) {
-	loop_until_bit_is_set(UCSR0A,RXC0);
-	return UDR0;
+	for (i = 0; i < 0x800; i++) {
+		testvalue = ~(i % 256);
+		if (ext_ram[i] != testvalue) {
+			printf("SRAM error (read phase): ext_ram[%d] = %02X (should be %02X)\r\n", i, ext_ram[i], testvalue);
+			rerrors++;
+		}
+	}
+
+	printf("SRAM test completed with %d errors in write phase and %d errors in read phase\r\n", werrors, rerrors);
 }
 
-int main(void)
-{
+int main(void) {
+		
+	uart_init();
+
+	MCUCR |= (1<<SRE);
+	SFIOR |= (1<<XMM2);
+
+
+	SRAM_test();
+	char input;
     while(1)
     {
-		uart_send_char('a');
+		
+		puts("Hello world \n");
+		input = getchar();
+		printf("You wrote %c\n", input);
     }
+	return 0;
 }
