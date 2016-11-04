@@ -9,6 +9,7 @@
 #include <avr/io.h>
 #include <stdio.h>
 #include "uart.h"
+#include "util/delay.h"
 
 void SRAM_test(void) {
 	//Start address for the SRAM
@@ -41,22 +42,51 @@ void SRAM_test(void) {
 	printf("SRAM test completed with %d errors in write phase and %d errors in read phase\r\n", werrors, rerrors);
 }
 
-int main(void) {
-		
-	uart_init();
+void GAL_test(void) {
+	volatile char *adc = (char *) 0x1000;
+	uint16_t i;
+	unsigned char testvalue = 'a';
+	
+	//printf("Starting write to ADC...\r\n");
+	
+	//for(i = 0; i < 0x1800; i++) {
+		//testvalue = ~(i % 256);
+	adc[0] = testvalue;
+	//}
+}
 
+void adc_init(void) {
 	MCUCR |= (1<<SRE);
 	SFIOR |= (1<<XMM2);
+	DDRE &= ~(1<<PINE0);
+	
+}
 
+uint8_t adc_read(uint8_t channel) {
+	
+	volatile char *adc = (char *) 0x1400;
+	
+	*adc = 0x04 | channel;
+	
+	_delay_us(10);
+	
+	while (PINE & (1<<PINE0)) {}
+	
+	return *adc;
+}
+
+int main(void) {
+	adc_init();	
+	uart_init();
 
 	SRAM_test();
-	char input;
-    while(1)
-    {
-		
-		puts("Hello world \n");
-		input = getchar();
-		printf("You wrote %c\n", input);
+	
+    uint8_t value;
+	while(1)
+    {	
+		value = (uint8_t)adc_read(0);
+		printf("Joystick value is currently: %d \n",value);
+		_delay_ms(200);
     }
 	return 0;
 }

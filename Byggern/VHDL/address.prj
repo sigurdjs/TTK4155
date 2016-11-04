@@ -1,0 +1,33 @@
+#-- Lattice Semiconductor Corporation Ltd.
+#-- Synplify OEM project file u:/ttk4155/byggern/vhdl\address.prj
+#-- Written on Thu Nov 03 20:03:23 2016
+
+
+#device options
+set_option -technology ispGAL
+
+#compilation/mapping options
+
+#map options
+
+#simulation options
+set_option -write_verilog false
+set_option -write_vhdl false
+
+#timing analysis options
+set_option -synthesis_onoff_pragma false
+
+#-- add_file options
+add_file -vhdl -lib work "address.vhd"
+
+#-- top module name
+set_option -top_module address
+
+#-- set result format/file last
+project -result_file "address.edi"
+
+#-- error message log file
+project -log_file address.srf
+
+#-- run Synplify with 'arrange VHDL file'
+project -run

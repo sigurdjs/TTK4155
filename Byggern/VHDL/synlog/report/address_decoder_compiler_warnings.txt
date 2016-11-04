@@ -1,0 +1,4 @@
+@W: CL240 :"U:\ttk4155\byggern\vhdl\address.vhd":14:0:14:6|oled_dc is not assigned a value (floating) -- simulation mismatch possible. 
+@W: CL159 :"U:\ttk4155\byggern\vhdl\address.vhd":9:0:9:1|Input a9 is unused
+@W: CL159 :"U:\ttk4155\byggern\vhdl\address.vhd":10:0:10:1|Input a8 is unused
+
