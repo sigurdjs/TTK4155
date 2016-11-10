@@ -3,7 +3,7 @@
 
 #include <stdio.h>
 
-void uart_init();
+void uart_init(void);
 void uart_send_char(char c, FILE *stream);
 char uart_recieve_char(FILE *stream);
 
