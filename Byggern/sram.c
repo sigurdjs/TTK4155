@@ -1,8 +1,8 @@
 #include "setup.h"
 #include "sram.h"
 
-void SRAM_test(void) {
-    	//Start address for the SRAM
+void sram_test(void) {
+    //Start address for the SRAM
 	volatile char *ext_ram = (char *) 0x1800;
 
 	uint16_t i, werrors, rerrors;
@@ -32,16 +32,16 @@ void SRAM_test(void) {
 	printf("SRAM test completed with %d errors in write phase and %d errors in read phase\r\n", werrors, rerrors);
 }
 
-void sram_w(unsigned char value, uint8_t address) { 
-    volatile char *ext_ram = (char *) 0x1800; 
-    *ext_ram = address;
-    ext_ram = value;
+void sram_w( char value, uint8_t address) { 
+    uint16_t final_address = 0x1800 | address;
+	volatile char *ext_ram = (char *) final_address; 
+    *ext_ram = value;
 }
 
-unsigned char sram_r(uint8_t address) {
-    volatile char *ext_ram = (char *) 0x1800;
-    *ext_ram = address;
-    return ext_ram;
+char sram_r(uint8_t address) {
+	uint16_t final_address = 0x1800 | address;
+	volatile char *ext_ram = (char *) final_address;
+	return *ext_ram;
 }
 
 

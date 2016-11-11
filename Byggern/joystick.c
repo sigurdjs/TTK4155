@@ -5,8 +5,8 @@
 #define NEUTRAL 40
 
 static joystick_direction prev_dir;
-static uint16_t zero_x;
-static uint16_t zero_y;
+static uint8_t zero_x;
+static uint8_t zero_y;
 
 void joy_init() {
     adc_init();
@@ -19,8 +19,8 @@ void joy_calibrate() {
 
 joystick_position get_joy_position(void) {
     joystick_position pos;
-    pos.x_pos = 100*((adc_read(JOY_X) - zero_x)/128);
-    pos.y_pos = 100*((adc_read(JOY_Y) - zero_y)/128);
+    pos.x_pos = (int16_t) 100*(((double) adc_read(JOY_X) - (double) zero_x)/129);
+    pos.y_pos = (int16_t) 100*(((double) adc_read(JOY_Y) - (double) zero_y)/129);
     return pos;
 }
        
@@ -28,19 +28,30 @@ joystick_direction get_joy_direction(void) {
     joystick_position pos = get_joy_position();
     joystick_direction dir;
     if(abs(pos.x_pos) < NEUTRAL && abs(pos.y_pos) < NEUTRAL) {
+		printf("Direction is neutral \n");
         dir = NEUTRAL;
     } else if(abs(pos.x_pos) < NEUTRAL && pos.y_pos > NEUTRAL) {
-        dir = UP;
+        printf("Direction is up \n");
+		dir = UP;
     } else if(abs(pos.x_pos) < NEUTRAL && pos.y_pos < NEUTRAL) {
-        dir = DOWN;
+        printf("Direction is down \n");
+		dir = DOWN;
     } else if(pos.x_pos > NEUTRAL && abs(pos.y_pos) < NEUTRAL) {
-        dir = RIGHT;
+        printf("Direction is right \n");
+		dir = RIGHT;
     } else if(pos.x_pos < NEUTRAL && abs(pos.y_pos) < NEUTRAL) {
-        dir = LEFT;
+        printf("Direction is left \n");
+		dir = LEFT;
     } else {
+		printf("Direction is previous \n");
         dir = prev_dir;
     }
     prev_dir = dir;
     return dir;
+}
+
+uint16_t get_slider_position(adc_channel channel) {
+	uint16_t pos = 100*((double) adc_read(channel))/255;
+	return pos;
 }
 

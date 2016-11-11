@@ -7,14 +7,15 @@
 
 typedef enum {LEFT, RIGHT, UP, DOWN, NEUTRAL} joystick_direction; 
 typedef struct {
-    uint8_t x_pos;
-    uint8_t y_pos;
+    int16_t x_pos;
+    int16_t y_pos;
 } joystick_position;
 
 void joy_init();
 void joy_calibrate();
 joystick_direction get_joy_direction();
 joystick_position get_joy_position();
+uint16_t get_slider_position(adc_channel channel);
 
 
 

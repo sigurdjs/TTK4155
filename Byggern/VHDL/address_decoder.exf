@@ -1,8 +1,7 @@
 Section Cross Reference File
-Design 'address_decoder' created Thu Nov 03 20:12:12 2016
+Design 'address_decoder' created Fri Nov 11 02:06:54 2016
    Type              New Name                               Original Name
 // ----------------------------------------------------------------------
-   Net                 gnd_n_n                                       GND
 End
 Section Type      Name
 // ----------------------------------------------------------------------

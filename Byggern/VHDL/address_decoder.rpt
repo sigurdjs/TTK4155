@@ -1,7 +1,7 @@
 
 
                                                                       Page 1
-ispLEVER Classic 2.0.00.17.20.15  -  Device Utilization Chart         Thu Nov 03 20:12:12 2016
+ispLEVER Classic 2.0.00.17.20.15  -  Device Utilization Chart         Fri Nov 11 02:06:54 2016
 
 
 
@@ -25,7 +25,7 @@ Output files:
 
 
                                                                       Page 2
-ispLEVER Classic 2.0.00.17.20.15  -  Device Utilization Chart         Thu Nov 03 20:12:12 2016
+ispLEVER Classic 2.0.00.17.20.15  -  Device Utilization Chart         Fri Nov 11 02:06:54 2016
 
 P16V8AS Programmed Logic:
 --------------------------------------------------------------------------------
@@ -34,16 +34,16 @@ P16V8AS Programmed Logic:
 
 ram_cs     = !(  !a11 );
 
-adc_cs     = (  !a11 & a10 );
+adc_cs     = !(  !a11 & a10 );
 
-oled_cs     = (  !a11 & !a10 );
+oled_cs     = !(  !a11 & !a10 );
 
-oled_dc     = (0);
+oled_dc     = !(  !a9 );
 
 
 
                                                                       Page 3
-ispLEVER Classic 2.0.00.17.20.15  -  Device Utilization Chart         Thu Nov 03 20:12:12 2016
+ispLEVER Classic 2.0.00.17.20.15  -  Device Utilization Chart         Fri Nov 11 02:06:54 2016
 
 P16V8AS Chip Diagram:
 --------------------------------------------------------------------------------
@@ -83,7 +83,7 @@ P16V8AS Chip Diagram:
 
 
                                                                       Page 4
-ispLEVER Classic 2.0.00.17.20.15  -  Device Utilization Chart         Thu Nov 03 20:12:12 2016
+ispLEVER Classic 2.0.00.17.20.15  -  Device Utilization Chart         Fri Nov 11 02:06:54 2016
 
 P16V8AS Resource Allocations:
 --------------------------------------------------------------------------------
@@ -96,7 +96,7 @@ P16V8AS Resource Allocations:
                       |           |             |
 Input Pins:           |           |             |
                       |           |             |
-          Input:      |     10    |      2      |    8 ( 80 %)
+          Input:      |     10    |      3      |    7 ( 70 %)
                       |           |             |
 Output Pins:          |           |             |
                       |           |             |
@@ -111,7 +111,7 @@ Buried Nodes:         |           |             |
 
 
                                                                       Page 5
-ispLEVER Classic 2.0.00.17.20.15  -  Device Utilization Chart         Thu Nov 03 20:12:12 2016
+ispLEVER Classic 2.0.00.17.20.15  -  Device Utilization Chart         Fri Nov 11 02:06:54 2016
 
 P16V8AS Product Terms Distribution:
 --------------------------------------------------------------------------------
@@ -124,7 +124,7 @@ P16V8AS Product Terms Distribution:
 ram_cs                                   |   19     |   1   |   8   |   7
 adc_cs                                   |   18     |   1   |   8   |   7
 oled_cs                                  |   17     |   1   |   8   |   7
-oled_dc                                  |   16     |   0   |   8   |   8
+oled_dc                                  |   16     |   1   |   8   |   7
 
 
      ==== List of Inputs/Feedbacks ====
@@ -133,10 +133,11 @@ Signal Name                              | Pin      | Pin Type
 =========================================|==========|=========
 a11                                      |    1     | INPUT
 a10                                      |    2     | INPUT
+a9                                       |    3     | INPUT
 
 
                                                                       Page 6
-ispLEVER Classic 2.0.00.17.20.15  -  Device Utilization Chart         Thu Nov 03 20:12:12 2016
+ispLEVER Classic 2.0.00.17.20.15  -  Device Utilization Chart         Fri Nov 11 02:06:54 2016
 
 P16V8AS Unused Resources:
 --------------------------------------------------------------------------------
@@ -146,7 +147,6 @@ P16V8AS Unused Resources:
  Pin   |  Pin   |   Product   | Flip-flop
 Number |  Type  |   Terms     |   Type
 =======|========|=============|==========
-    3  |  INPUT |      -      |    -   
     4  |  INPUT |      -      |    -   
     5  |  INPUT |      -      |    -   
     6  |  INPUT |      -      |    -   

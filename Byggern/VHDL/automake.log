@@ -14,12 +14,12 @@ Done sucessfully with exit code 0.
 #Build: Synplify Pro I-2014.03LC , Build 063R, May 27 2014
 #install: C:\ispLEVER_Classic2_0\synpbase
 #OS: Windows 7 6.1
-#Hostname: ITK-D651
+#Hostname: ITK-D669
 
 #Implementation: vhdl
 
 $ Start of Compile
-#Thu Nov 03 20:12:05 2016
+#Fri Nov 11 02:06:47 2016
 
 Synopsys VHDL Compiler, version comp201403rcp1, Build 060R, built May 27 2014
 @N|Running in 64-bit mode
@@ -29,17 +29,16 @@ Copyright (C) 1994-2014 Synopsys, Inc. This software and the associated document
 @N:"U:\ttk4155\byggern\vhdl\address.vhd":5:7:5:21|Top entity is set to address_decoder.
 File U:\ttk4155\byggern\vhdl\address.vhd changed - recompiling
 VHDL syntax check successful!
+File U:\ttk4155\byggern\vhdl\address.vhd changed - recompiling
 @N: CD630 :"U:\ttk4155\byggern\vhdl\address.vhd":5:7:5:21|Synthesizing work.address_decoder.behave 
 Post processing for work.address_decoder.behave
-@W: CL240 :"U:\ttk4155\byggern\vhdl\address.vhd":14:0:14:6|oled_dc is not assigned a value (floating) -- simulation mismatch possible. 
-@W: CL159 :"U:\ttk4155\byggern\vhdl\address.vhd":9:0:9:1|Input a9 is unused
 @W: CL159 :"U:\ttk4155\byggern\vhdl\address.vhd":10:0:10:1|Input a8 is unused
 @END
 
 At c_vhdl Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 68MB peak: 69MB)
 
 Process took 0h:00m:01s realtime, 0h:00m:01s cputime
-# Thu Nov 03 20:12:06 2016
+# Fri Nov 11 02:06:47 2016
 
 ###########################################################]
 Synopsys Netlist Linker, version comp201403rcp1, Build 060R, built May 27 2014
@@ -49,7 +48,7 @@ File U:\ttk4155\byggern\vhdl\synwork\address_decoder_comp.srs changed - recompil
 At syn_nfilter Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 67MB peak: 68MB)
 
 Process took 0h:00m:01s realtime, 0h:00m:01s cputime
-# Thu Nov 03 20:12:07 2016
+# Fri Nov 11 02:06:48 2016
 
 ###########################################################]
 
@@ -63,14 +62,14 @@ Starting EDIF2BLIF....
 readEDIF ended normally.
 
 EDIF2BLIF: Warning: Remove floating instance: :
-	a9
+	a8
 
 Inspect circuit address_decoder
     Number of input ports   : 4
     Number of output ports  : 4
     Number of bidir ports   : 0
-    Number of instances     : 11
-    Number of nets          : 13
+    Number of instances     : 13
+    Number of nets          : 16
 
 No design errors found in circuit address_decoder
 
@@ -91,10 +90,12 @@ Reading Open-ABEL 2 file address_decoder.bl0...
 Node a10_i has been collapsed.
 Node a11_i has been collapsed.
 Node a10_c has been collapsed.
-Node gnd_n_n has been collapsed.
+Node un1_oled_cs has been collapsed.
+Node adc_cs_1 has been collapsed.
+Node un1_oled_cs_i has been collapsed.
+Node adc_cs_1_i has been collapsed.
 Node a11_c has been collapsed.
-Node adc_cs_c has been collapsed.
-Node oled_cs_c has been collapsed.
+Node a9_c has been collapsed.
 Performing 'bypin choose' optimization...
 Writing Open-ABEL 2 (BLIF) file address_decoder.bl1...
 
@@ -166,8 +167,6 @@ Portions Copyright(C), Alan Phillips, Lancaster University Computer Centre 1992-
 Input file: 'address_decoder.tt2'
 Device 'p16v8'
 Note 4161: Using device architecture type P16V8AS.
-Warning 4154:Signal 'a9' (pin 3) is not used in the design -
-neither the signal nor its pin will be reassigned.
 Warning 4154:Signal 'a8' (pin 4) is not used in the design -
 neither the signal nor its pin will be reassigned.
 Design FITS
@@ -193,7 +192,7 @@ Building model...
 Choosing best polarities...
 Mapping equations...
 .
-2 of 64 terms used; 0 vectors loaded
+3 of 64 terms used; 0 vectors loaded
 Programmer load file: 'address_decoder.jed'
 Generating report...
 Report file: 'address_decoder.rpt'

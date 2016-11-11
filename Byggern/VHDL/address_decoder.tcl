@@ -1206,3 +1206,121 @@ if [runCmd "\"$cpld_bin/fuseasm\" address_decoder.tt3 -dev p16v8 -o address_deco
 
 ########## Tcl recorder end at 11/03/16 20:11:58 ###########
 
+
+########## Tcl recorder starts at 11/11/16 01:56:52 ##########
+
+# Commands to make the Process: 
+# Hierarchy
+if [runCmd "\"$cpld_bin/vhd2jhd\" \"address.vhd\" -o \"address.jhd\" -m \"$install_dir/ispcpld/generic/lib/vhd/location.map\" -p \"$install_dir/ispcpld/generic/lib\""] {
+	return
+} else {
+	vwait done
+	if [checkResult $done] {
+		return
+	}
+}
+
+########## Tcl recorder end at 11/11/16 01:56:52 ###########
+
+
+########## Tcl recorder starts at 11/11/16 02:06:30 ##########
+
+# Commands to make the Process: 
+# Hierarchy
+if [runCmd "\"$cpld_bin/vhd2jhd\" \"address.vhd\" -o \"address.jhd\" -m \"$install_dir/ispcpld/generic/lib/vhd/location.map\" -p \"$install_dir/ispcpld/generic/lib\""] {
+	return
+} else {
+	vwait done
+	if [checkResult $done] {
+		return
+	}
+}
+
+########## Tcl recorder end at 11/11/16 02:06:30 ###########
+
+
+########## Tcl recorder starts at 11/11/16 02:06:37 ##########
+
+# Commands to make the Process: 
+# Chip Report
+if [catch {open address_decoder.cmd w} rspFile] {
+	puts stderr "Cannot create response file address_decoder.cmd: $rspFile"
+} else {
+	puts $rspFile "STYFILENAME: address_decoder.sty
+PROJECT: address_decoder
+WORKING_PATH: \"$proj_dir\"
+MODULE: address_decoder
+VHDL_FILE_LIST: address.vhd
+OUTPUT_FILE_NAME: address_decoder
+SUFFIX_NAME: edi
+"
+	close $rspFile
+}
+if [runCmd "\"$cpld_bin/Synpwrap\" -e address_decoder -target ispGAL -pro "] {
+	return
+} else {
+	vwait done
+	if [checkResult $done] {
+		return
+	}
+}
+file delete address_decoder.cmd
+if [runCmd "\"$cpld_bin/edif2blf\" -edf \"address_decoder.edi\" -out \"address_decoder.bl0\" -err automake.err -log \"address_decoder.log\" -prj address_decoder -lib \"$install_dir/ispcpld/dat/mach.edn\" -cvt YES -net_Vcc VCC -net_GND GND -nbx -dse -tlw"] {
+	return
+} else {
+	vwait done
+	if [checkResult $done] {
+		return
+	}
+}
+if [runCmd "\"$cpld_bin/iblifopt\" \"address_decoder.bl0\" -red bypin choose -collapse -pterms 8 -family -err automake.err "] {
+	return
+} else {
+	vwait done
+	if [checkResult $done] {
+		return
+	}
+}
+if [runCmd "\"$cpld_bin/iblflink\" \"address_decoder.bl1\" -o \"address_decoder.bl2\" -omod address_decoder -family -err automake.err "] {
+	return
+} else {
+	vwait done
+	if [checkResult $done] {
+		return
+	}
+}
+if [runCmd "\"$cpld_bin/iblifopt\" address_decoder.bl2 -red bypin choose -sweep -collapse all -pterms 8 -err automake.err "] {
+	return
+} else {
+	vwait done
+	if [checkResult $done] {
+		return
+	}
+}
+if [runCmd "\"$cpld_bin/idiofft\" address_decoder.bl3 -pla -o address_decoder.tt2 -dev p16v8 -define N -err automake.err "] {
+	return
+} else {
+	vwait done
+	if [checkResult $done] {
+		return
+	}
+}
+if [runCmd "\"$cpld_bin/fit\" address_decoder.tt2 -dev p16v8 -str -err automake.err "] {
+	return
+} else {
+	vwait done
+	if [checkResult $done] {
+		return
+	}
+}
+if [runCmd "\"$cpld_bin/fuseasm\" address_decoder.tt3 -dev p16v8 -o address_decoder.jed -ivec NoInput.tmv -rep address_decoder.rpt -doc brief -con ptblown -for brief -err automake.err "] {
+	return
+} else {
+	vwait done
+	if [checkResult $done] {
+		return
+	}
+}
+
+########## Tcl recorder end at 11/11/16 02:06:37 ###########
+

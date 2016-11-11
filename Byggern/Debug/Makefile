@@ -37,7 +37,11 @@ SUBDIRS :=
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS +=  \
+../adc.c \
 ../Byggern.c \
+../joystick.c \
+../oled.c \
+../sram.c \
 ../uart.c
 
 
@@ -48,19 +52,35 @@ ASM_SRCS +=
 
 
 OBJS +=  \
+adc.o \
 Byggern.o \
+joystick.o \
+oled.o \
+sram.o \
 uart.o
 
 OBJS_AS_ARGS +=  \
+adc.o \
 Byggern.o \
+joystick.o \
+oled.o \
+sram.o \
 uart.o
 
 C_DEPS +=  \
+adc.d \
 Byggern.d \
+joystick.d \
+oled.d \
+sram.d \
 uart.d
 
 C_DEPS_AS_ARGS +=  \
+adc.d \
 Byggern.d \
+joystick.d \
+oled.d \
+sram.d \
 uart.d
 
 OUTPUT_FILE_PATH +=Byggern.elf
@@ -77,6 +97,14 @@ LINKER_SCRIPT_DEP+=
 
 
 # AVR32/GNU C Compiler
+
+
+
+
+
+
+
+
 
 
 

@@ -5,8 +5,8 @@
 
 
 void sram_test(void);
-void sram_w(unsigned char value, uint8_t address);
-unsigned char sram_r(uint8_t address);
+void sram_w(char value, uint8_t address);
+char sram_r(uint8_t address);
 
 
 #endif

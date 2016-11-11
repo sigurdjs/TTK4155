@@ -109,10 +109,34 @@
     </ToolchainSettings>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="adc.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="adc.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="Byggern.c">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="joystick.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="joystick.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="oled.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="oled.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="setup.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="sram.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="sram.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="uart.c">

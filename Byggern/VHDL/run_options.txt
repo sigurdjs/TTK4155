@@ -1,7 +1,7 @@
 #--  Synopsys, Inc.
 #--  Version I-2014.03LC 
 #--  Project file U:\ttk4155\byggern\vhdl\run_options.txt
-#--  Written on Thu Nov 03 20:12:05 2016
+#--  Written on Fri Nov 11 02:06:46 2016
 
 
 #project files
