@@ -35,7 +35,7 @@ c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-t
 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr5\libgcc.a(_exit.o)
                               c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5/crtm162.o (exit)
 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr5\libgcc.a(_copy_data.o)
-                              Byggern.o (__do_copy_data)
+                              main.o (__do_copy_data)
 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr5\libgcc.a(_clear_bss.o)
                               joystick.o (__do_clear_bss)
 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libc.a(rand.o)
@@ -43,9 +43,9 @@ c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-t
 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libc.a(iob.o)
                               uart.o (__iob)
 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libc.a(printf.o)
-                              Byggern.o (printf)
+                              main.o (printf)
 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libc.a(putchar.o)
-                              Byggern.o (putchar)
+                              main.o (putchar)
 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libc.a(puts.o)
                               can.o (puts)
 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libc.a(vfprintf_std.o)
@@ -87,9 +87,9 @@ Discarded input sections
  .text          0x00000000        0x0 adc.o
  .data          0x00000000        0x0 adc.o
  .bss           0x00000000        0x0 adc.o
- .text          0x00000000        0x0 Byggern.o
- .data          0x00000000        0x0 Byggern.o
- .bss           0x00000000        0x0 Byggern.o
+ .text          0x00000000        0x0 main.o
+ .data          0x00000000        0x0 main.o
+ .bss           0x00000000        0x0 main.o
  .text          0x00000000        0x0 can.o
  .data          0x00000000        0x0 can.o
  .bss           0x00000000        0x0 can.o
@@ -134,7 +134,7 @@ Discarded input sections
                 0x00000000       0x48 oled.o
  .debug_ranges  0x00000000       0x38 oled.o
  .debug_line    0x00000000      0x12f oled.o
- .debug_str     0x00000000      0x19e oled.o
+ .debug_str     0x00000000      0x1a4 oled.o
  .comment       0x00000000       0x31 oled.o
  .debug_frame   0x00000000       0x7c oled.o
  .text          0x00000000        0x0 spi.o
@@ -451,7 +451,7 @@ Linker script and memory map
 Address of section .data set to 0x800100
 LOAD c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5/crtm162.o
 LOAD adc.o
-LOAD Byggern.o
+LOAD main.o
 LOAD can.o
 LOAD joystick.o
 LOAD mcp2515.o
@@ -651,7 +651,7 @@ END GROUP
  .text.adc_read
                 0x000000be       0x10 adc.o
                 0x000000be                adc_read
- .text.main     0x000000ce       0xc6 Byggern.o
+ .text.main     0x000000ce       0xc6 main.o
                 0x000000ce                main
  .text.can_set_mode
                 0x00000194       0x28 can.o
@@ -778,7 +778,7 @@ END GROUP
  *(.rodata)
  *(.rodata*)
  .rodata.str1.1
-                0x0080010e       0x10 Byggern.o
+                0x0080010e       0x10 main.o
  .rodata.str1.1
                 0x0080011e       0x17 can.o
  .rodata.str1.1
@@ -850,7 +850,7 @@ END GROUP
  *(.comment)
  .comment       0x00000000       0x30 adc.o
                                  0x31 (size before relaxing)
- .comment       0x00000000       0x31 Byggern.o
+ .comment       0x00000000       0x31 main.o
  .comment       0x00000000       0x31 can.o
  .comment       0x00000000       0x31 joystick.o
  .comment       0x00000000       0x31 mcp2515.o
@@ -885,7 +885,7 @@ END GROUP
  .debug_aranges
                 0x00000000       0x28 adc.o
  .debug_aranges
-                0x00000028       0x20 Byggern.o
+                0x00000028       0x20 main.o
  .debug_aranges
                 0x00000048       0x38 can.o
  .debug_aranges
@@ -905,7 +905,7 @@ END GROUP
 .debug_info     0x00000000     0x158b
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x00000000       0xfc adc.o
- .debug_info    0x000000fc      0x3ce Byggern.o
+ .debug_info    0x000000fc      0x3ce main.o
  .debug_info    0x000004ca      0x42f can.o
  .debug_info    0x000008f9      0x453 joystick.o
  .debug_info    0x00000d4c      0x372 mcp2515.o
@@ -916,7 +916,7 @@ END GROUP
 .debug_abbrev   0x00000000      0xa3d
  *(.debug_abbrev)
  .debug_abbrev  0x00000000       0xb1 adc.o
- .debug_abbrev  0x000000b1      0x238 Byggern.o
+ .debug_abbrev  0x000000b1      0x238 main.o
  .debug_abbrev  0x000002e9      0x191 can.o
  .debug_abbrev  0x0000047a      0x19f joystick.o
  .debug_abbrev  0x00000619       0xfc mcp2515.o
@@ -924,21 +924,21 @@ END GROUP
  .debug_abbrev  0x000007c2      0x113 sram.o
  .debug_abbrev  0x000008d5      0x168 uart.o
 
-.debug_line     0x00000000      0x8a9
+.debug_line     0x00000000      0x8a6
  *(.debug_line .debug_line.* .debug_line_end)
  .debug_line    0x00000000       0xc9 adc.o
- .debug_line    0x000000c9      0x190 Byggern.o
- .debug_line    0x00000259      0x133 can.o
- .debug_line    0x0000038c      0x18e joystick.o
- .debug_line    0x0000051a       0xbb mcp2515.o
- .debug_line    0x000005d5       0xf8 spi.o
- .debug_line    0x000006cd       0xec sram.o
- .debug_line    0x000007b9       0xf0 uart.o
+ .debug_line    0x000000c9      0x18d main.o
+ .debug_line    0x00000256      0x133 can.o
+ .debug_line    0x00000389      0x18e joystick.o
+ .debug_line    0x00000517       0xbb mcp2515.o
+ .debug_line    0x000005d2       0xf8 spi.o
+ .debug_line    0x000006ca       0xec sram.o
+ .debug_line    0x000007b6       0xf0 uart.o
 
 .debug_frame    0x00000000      0x3ec
  *(.debug_frame)
  .debug_frame   0x00000000       0x34 adc.o
- .debug_frame   0x00000034       0x34 Byggern.o
+ .debug_frame   0x00000034       0x34 main.o
  .debug_frame   0x00000068       0xd8 can.o
  .debug_frame   0x00000140       0x8c joystick.o
  .debug_frame   0x000001cc       0xb8 mcp2515.o
@@ -946,29 +946,29 @@ END GROUP
  .debug_frame   0x000002e8       0xb8 sram.o
  .debug_frame   0x000003a0       0x4c uart.o
 
-.debug_str      0x00000000      0x490
+.debug_str      0x00000000      0x493
  *(.debug_str)
- .debug_str     0x00000000      0x136 adc.o
-                                0x177 (size before relaxing)
- .debug_str     0x00000136      0x128 Byggern.o
-                                0x267 (size before relaxing)
- .debug_str     0x0000025e       0x7f can.o
-                                0x1f8 (size before relaxing)
- .debug_str     0x000002dd       0x96 joystick.o
-                                0x25c (size before relaxing)
- .debug_str     0x00000373       0x89 mcp2515.o
-                                0x1f6 (size before relaxing)
- .debug_str     0x000003fc        0xb spi.o
-                                0x165 (size before relaxing)
- .debug_str     0x00000407       0x4a sram.o
-                                0x193 (size before relaxing)
- .debug_str     0x00000451       0x3f uart.o
+ .debug_str     0x00000000      0x13c adc.o
+                                0x17d (size before relaxing)
+ .debug_str     0x0000013c      0x125 main.o
+                                0x26a (size before relaxing)
+ .debug_str     0x00000261       0x7f can.o
+                                0x1fe (size before relaxing)
+ .debug_str     0x000002e0       0x96 joystick.o
+                                0x262 (size before relaxing)
+ .debug_str     0x00000376       0x89 mcp2515.o
+                                0x1fc (size before relaxing)
+ .debug_str     0x000003ff        0xb spi.o
+                                0x16b (size before relaxing)
+ .debug_str     0x0000040a       0x4a sram.o
                                 0x199 (size before relaxing)
+ .debug_str     0x00000454       0x3f uart.o
+                                0x19f (size before relaxing)
 
 .debug_loc      0x00000000      0xa96
  *(.debug_loc)
  .debug_loc     0x00000000       0x21 adc.o
- .debug_loc     0x00000021       0x91 Byggern.o
+ .debug_loc     0x00000021       0x91 main.o
  .debug_loc     0x000000b2      0x2d3 can.o
  .debug_loc     0x00000385      0x20e joystick.o
  .debug_loc     0x00000593      0x257 mcp2515.o
@@ -996,7 +996,7 @@ END GROUP
 .debug_ranges   0x00000000      0x130
  *(.debug_ranges)
  .debug_ranges  0x00000000       0x18 adc.o
- .debug_ranges  0x00000018       0x10 Byggern.o
+ .debug_ranges  0x00000018       0x10 main.o
  .debug_ranges  0x00000028       0x28 can.o
  .debug_ranges  0x00000050       0x30 joystick.o
  .debug_ranges  0x00000080       0x40 mcp2515.o
@@ -1006,5 +1006,5 @@ END GROUP
 
 .debug_macro
  *(.debug_macro)
-OUTPUT(Byggern.elf elf32-avr)
+OUTPUT(node1.elf elf32-avr)
 LOAD linker stubs

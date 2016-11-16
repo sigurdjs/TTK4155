@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Atmel Studio Solution File, Format Version 11.00
+Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "node1", "node1.cproj", "{FB7DDD36-18E2-4FF2-9AEF-3E3F6E575ADB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|AVR = Debug|AVR
+		Release|AVR = Release|AVR
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FB7DDD36-18E2-4FF2-9AEF-3E3F6E575ADB}.Debug|AVR.ActiveCfg = Debug|AVR
+		{FB7DDD36-18E2-4FF2-9AEF-3E3F6E575ADB}.Debug|AVR.Build.0 = Debug|AVR
+		{FB7DDD36-18E2-4FF2-9AEF-3E3F6E575ADB}.Release|AVR.ActiveCfg = Release|AVR
+		{FB7DDD36-18E2-4FF2-9AEF-3E3F6E575ADB}.Release|AVR.Build.0 = Release|AVR
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

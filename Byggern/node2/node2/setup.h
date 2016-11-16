@@ -1,0 +1,13 @@
+#ifndef _SETUP_H_
+#define _SETUP_H_ 
+
+#define set_bit( reg, bit ) (reg |= (1 << bit))
+#define clear_bit( reg, bit ) (reg &= ~(1 << bit))
+#define test_bit( reg, bit ) (reg & (1 << bit))
+#define wait_until_bit_is_set( reg, bit ) while( !test_bit( reg, bit ))
+#define wait_until_bit_is_clear( reg, bit ) while( test_bit( reg, bit ))
+
+#define F_CPU 16000000 // clock frequency in Hz
+#define BAUD 9600
+
+#endif

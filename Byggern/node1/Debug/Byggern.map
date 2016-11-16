@@ -134,7 +134,7 @@ Discarded input sections
                 0x00000000       0x48 oled.o
  .debug_ranges  0x00000000       0x38 oled.o
  .debug_line    0x00000000      0x12f oled.o
- .debug_str     0x00000000      0x19e oled.o
+ .debug_str     0x00000000      0x1a4 oled.o
  .comment       0x00000000       0x31 oled.o
  .debug_frame   0x00000000       0x7c oled.o
  .text          0x00000000        0x0 spi.o
@@ -946,24 +946,24 @@ END GROUP
  .debug_frame   0x000002e8       0xb8 sram.o
  .debug_frame   0x000003a0       0x4c uart.o
 
-.debug_str      0x00000000      0x490
+.debug_str      0x00000000      0x496
  *(.debug_str)
- .debug_str     0x00000000      0x136 adc.o
-                                0x177 (size before relaxing)
- .debug_str     0x00000136      0x128 Byggern.o
-                                0x267 (size before relaxing)
- .debug_str     0x0000025e       0x7f can.o
-                                0x1f8 (size before relaxing)
- .debug_str     0x000002dd       0x96 joystick.o
-                                0x25c (size before relaxing)
- .debug_str     0x00000373       0x89 mcp2515.o
-                                0x1f6 (size before relaxing)
- .debug_str     0x000003fc        0xb spi.o
-                                0x165 (size before relaxing)
- .debug_str     0x00000407       0x4a sram.o
-                                0x193 (size before relaxing)
- .debug_str     0x00000451       0x3f uart.o
+ .debug_str     0x00000000      0x13c adc.o
+                                0x17d (size before relaxing)
+ .debug_str     0x0000013c      0x128 Byggern.o
+                                0x26d (size before relaxing)
+ .debug_str     0x00000264       0x7f can.o
+                                0x1fe (size before relaxing)
+ .debug_str     0x000002e3       0x96 joystick.o
+                                0x262 (size before relaxing)
+ .debug_str     0x00000379       0x89 mcp2515.o
+                                0x1fc (size before relaxing)
+ .debug_str     0x00000402        0xb spi.o
+                                0x16b (size before relaxing)
+ .debug_str     0x0000040d       0x4a sram.o
                                 0x199 (size before relaxing)
+ .debug_str     0x00000457       0x3f uart.o
+                                0x19f (size before relaxing)
 
 .debug_loc      0x00000000      0xa96
  *(.debug_loc)
