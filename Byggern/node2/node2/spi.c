@@ -26,10 +26,10 @@ char spi_read(void) {
 }
 
 void spi_select(void) {
-	clear_bit(PORTB,PINB4);
+	clear_bit(PORTB,PINB0);
 }
 
 
 void spi_deselect(void) {
-	set_bit(PORTB,PINB4);
+	set_bit(PORTB,PINB0);
 }

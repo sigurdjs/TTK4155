@@ -5,19 +5,31 @@
  *  Author: sigurdjs
  */ 
 
-
-#include <avr/io.h>
-#include <util/delay.h>
+#include "setup.h"
 #include "uart.h"
+#include "can.h"
+#include "spi.h"
+
+#include <util/delay.h>
+
 
 int main(void)
 {
 	uart_init();
+	spi_init();
+	char new_mode;
     while(1)
     {
-		printf("hello from the other side \n");
-		_delay_ms(500);
-		
+		spi_select();
+		mcp2515_bit_modify(MCP_CANCTRL,MODE_MASK,MODE_CONFIG);
+		_delay_ms(100);
+		new_mode = mcp2515_read(MCP_CANSTAT);
+		new_mode = new_mode & MODE_MASK;
+		printf("Mode is: %02X, should be: %02X \n",new_mode,MODE_CONFIG);
+		spi_deselect();
+		_delay_ms(1000);
+
+
     }
 	return 0;
 }

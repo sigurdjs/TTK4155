@@ -1,7 +1,7 @@
 #include "can.h"
 
 int can_init(void) {
-	clear_bit(DDRD,PIND2);    //Enable new message interrupt pin
+	clear_bit(DDRD,PD2);    //Enable new message interrupt pin
 	
 	mcp2515_init();
 	if (can_set_mode(MODE_CONFIG) != 0) {

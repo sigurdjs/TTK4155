@@ -2,10 +2,10 @@
 #define _SPI_H_
 
 #define DDR_SPI DDRB
-#define DD_SS PINB4
-#define DD_MOSI PINB5
-#define DD_MISO PINB6
-#define DD_SCK PINB7
+#define DD_SS PB0
+#define DD_MOSI PB2
+#define DD_MISO PB3
+#define DD_SCK PB1
 
 #include <avr/io.h>
 #include "setup.h"
