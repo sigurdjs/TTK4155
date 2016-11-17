@@ -42,7 +42,7 @@ Thumbs.db
 *.lvlps
 *.ini
 
-# Stupid files you dont need #
+# Stupid files you dont need #*.pdf
 *.jpg
 *.MOV
 *.pages
