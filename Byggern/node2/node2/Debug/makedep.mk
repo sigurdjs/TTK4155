@@ -8,6 +8,8 @@ mcp2515.c
 
 node2.c
 
+pwm.c
+
 spi.c
 
 uart.c

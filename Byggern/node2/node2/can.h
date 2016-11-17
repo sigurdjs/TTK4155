@@ -8,7 +8,7 @@
 typedef struct {
 	uint8_t id;
 	uint8_t length;
-	uint8_t data[8];
+	signed char data[8];
 } can_message;
 
 int can_init(void);

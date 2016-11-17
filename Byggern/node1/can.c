@@ -8,7 +8,7 @@ int can_init(void) {
 		printf("MCP2515 reset failed! \n");
 		return EXIT_FAILURE;
 	}
-	can_set_mode(MODE_LOOPBACK);
+	can_set_mode(MODE_NORMAL);
 	
 	mcp2515_bit_modify(MCP_RXB0CTRL, 0b01100100, 0xFF);
 	mcp2515_bit_modify(MCP_CANINTE, 0x01, 1);
@@ -30,11 +30,11 @@ int can_set_mode(char mode) {
 void can_send(can_message message) {
 	wait_until_bit_is_clear(mcp2515_read(MCP_TXB0CTRL),3);
 	
-	mcp2515_write(MCP_TXB0SIDH,(char) (message.id >> 3));
-	mcp2515_write(MCP_TXB0SIDL,(char) (message.id << 5));
-	mcp2515_write(MCP_TXB0DLC,(char) (message.length));
+	mcp2515_write(MCP_TXB0SIDH,(uint8_t) (message.id >> 3));
+	mcp2515_write(MCP_TXB0SIDL,(uint8_t) (message.id << 5));
+	mcp2515_write(MCP_TXB0DLC,(uint8_t) (message.length));
 	for (int i = 0; i < message.length; i++) {
-		mcp2515_write(MCP_TXB0D0 + i, message.data[i]);
+		mcp2515_write(MCP_TXB0D0 + i, (signed char) message.data[i]);
 	}
 	
 	mcp2515_req_to_send(MCP_RTS_TX0);	
@@ -50,7 +50,7 @@ can_message can_recieve(void) {
 		message.length = (uint8_t) mcp2515_read(MCP_RXB0DLC) & (0x0f);
 		//printf("ID: %d \n", message.id);
 		for (int i = 0; i < message.length; i++) {
-			message.data[i] = (uint8_t) mcp2515_read(MCP_RXB0D0 + i);
+			message.data[i] = (signed char) mcp2515_read(MCP_RXB0D0 + i);
 		}
 		//printf("Data: %d",message.data[0]);
 		mcp2515_bit_modify(MCP_CANINTF,0x01,0);

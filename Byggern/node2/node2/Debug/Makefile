@@ -40,6 +40,7 @@ C_SRCS +=  \
 ../can.c \
 ../mcp2515.c \
 ../node2.c \
+../pwm.c \
 ../spi.c \
 ../uart.c
 
@@ -54,6 +55,7 @@ OBJS +=  \
 can.o \
 mcp2515.o \
 node2.o \
+pwm.o \
 spi.o \
 uart.o
 
@@ -61,6 +63,7 @@ OBJS_AS_ARGS +=  \
 can.o \
 mcp2515.o \
 node2.o \
+pwm.o \
 spi.o \
 uart.o
 
@@ -68,6 +71,7 @@ C_DEPS +=  \
 can.d \
 mcp2515.d \
 node2.d \
+pwm.d \
 spi.d \
 uart.d
 
@@ -75,6 +79,7 @@ C_DEPS_AS_ARGS +=  \
 can.d \
 mcp2515.d \
 node2.d \
+pwm.d \
 spi.d \
 uart.d
 
@@ -92,6 +97,8 @@ LINKER_SCRIPT_DEP+=
 
 
 # AVR32/GNU C Compiler
+
+
 
 
 

@@ -5,6 +5,7 @@
  *  Author: sigurdjs
  */ 
 
+
 #include "uart.h"
 #include "sram.h"
 #include "adc.h"
@@ -21,33 +22,29 @@ int main(void) {
 	uart_init();
 
 	sram_test();
-	joy_calibrate();
 	//oled_init();
 	//OLED_reset();
 	joystick_position pos;
 	can_init();
 	can_message snd_msg;
 	can_message rcv_msg;
-	snd_msg.id = 3;
-	
-	snd_msg.data[0] = 'h';
-	snd_msg.data[1] = 'e';
-	snd_msg.data[2] = 'l';
-	snd_msg.data[3] = 'l';
-	snd_msg.data[4] = 'o';
-	snd_msg.length = 5;
+	snd_msg.id = 1;
+	joy_calibrate();
 	while(1)
     {	
 		
-
+		pos = get_joy_position();
+		snd_msg.data[0] = (signed char) pos.x_pos;
+		snd_msg.data[1] = (signed char) pos.y_pos;
+		snd_msg.length = 2;
+		printf("Sending message...\n");
 		can_send(snd_msg);
-		rcv_msg = can_recieve();
+		/*rcv_msg = can_recieve();
 		printf("Message ID: %d\n",rcv_msg.id);
 		for (int i = 0; i < rcv_msg.length; i++) {
-			printf("%c", rcv_msg.data[i]);
-		}
-		printf("\n");
-		_delay_ms(1000);
+			printf("%c \n", rcv_msg.data[i]);
+		}*/
+		_delay_ms(50);
     }
 	return 0;
 }
