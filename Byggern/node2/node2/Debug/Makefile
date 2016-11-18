@@ -38,10 +38,14 @@ SUBDIRS :=
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS +=  \
 ../can.c \
+../ball_detector.c \
+../dac.c \
 ../mcp2515.c \
+../motor.c \
 ../node2.c \
 ../pwm.c \
 ../spi.c \
+../TWI_Master.c \
 ../uart.c
 
 
@@ -53,34 +57,50 @@ ASM_SRCS +=
 
 OBJS +=  \
 can.o \
+ball_detector.o \
+dac.o \
 mcp2515.o \
+motor.o \
 node2.o \
 pwm.o \
 spi.o \
+TWI_Master.o \
 uart.o
 
 OBJS_AS_ARGS +=  \
 can.o \
+ball_detector.o \
+dac.o \
 mcp2515.o \
+motor.o \
 node2.o \
 pwm.o \
 spi.o \
+TWI_Master.o \
 uart.o
 
 C_DEPS +=  \
 can.d \
+ball_detector.d \
+dac.d \
 mcp2515.d \
+motor.d \
 node2.d \
 pwm.d \
 spi.d \
+TWI_Master.d \
 uart.d
 
 C_DEPS_AS_ARGS +=  \
 can.d \
+ball_detector.d \
+dac.d \
 mcp2515.d \
+motor.d \
 node2.d \
 pwm.d \
 spi.d \
+TWI_Master.d \
 uart.d
 
 OUTPUT_FILE_PATH +=node2.elf
@@ -97,6 +117,14 @@ LINKER_SCRIPT_DEP+=
 
 
 # AVR32/GNU C Compiler
+
+
+
+
+
+
+
+
 
 
 
