@@ -1,11 +1,9 @@
+#define N_LIVES 5
 #include "uart.h"
-#include "spi.h"
 #include "mcp2515.h"
 #include "can.h"
-#include "pwm.h"
 #include "ball_detector.h"
-#include "motor.h"
-#include <util/delay.h>
+#include "devices.h"
 
 
 int main(void) {
@@ -17,7 +15,6 @@ int main(void) {
 	can_message snd_msg;
 	can_message rcv_msg;
 	while(1) {
-		
 		rcv_msg = can_recieve();
         switch(rcv_msg.id) {
             case NEW_GAME:
@@ -25,22 +22,10 @@ int main(void) {
                 set_n_ball_lost(0);
                 break;
             case GAME_CTRLS:
-
+                update_devices(rcv_msg);
                 break;
-
-		check_ball_lost();
-
-		n = get_n_ball_lost();
-        can_send(snd_msg);
-            
-		printf("Waiting for message... \n");
-        if (rcv_msg.data[0] < 0) {
-			motor_set_direction(LEFT);
-		} else {
-			motor_set_direction(RIGHT);
-		}
-	
-		motor_set_speed(abs(rcv_msg.data[0]));
-	}
+        }
+        check_game_status(N_LIVES);    //Sends a can_message with either alive msg or game over.
+    }
 	return 0;
 }

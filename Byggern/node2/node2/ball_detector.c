@@ -27,7 +27,7 @@ uint16_t adc_get_val(void) {
 }
 
 
-void check_ball_lost(void) {
+uint8_t check_ball_lost(void) {
 	uint16_t val = adc_get_val();
 	if (val < BALL_LOST) {
 		_delay_ms(250);
@@ -39,10 +39,7 @@ void check_ball_lost(void) {
 	} else {
 		ball_flag = FALSE;
 	}
-}
-
-uint8_t get_n_ball_lost(void) {
-	return n_ball_lost;
+    return n_ball_lost;
 }
 
 void set_n_ball_lost(uint8_t val) { 

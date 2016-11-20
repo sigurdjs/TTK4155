@@ -22,7 +22,6 @@ void pwm_init(void) {
 	pwm_new_width(1.5);
 }
 
-
 void pwm_new_width(float dc_ms) {
 	if (dc_ms > 2.1) {
 		OCR4A = F_CPU/64/1000*2.1;

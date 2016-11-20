@@ -9,7 +9,6 @@
 #include "game.h"
 #include <util/delay.h>
 
-
 int main(void) {
 	adc_init();	
 	uart_init();
@@ -21,21 +20,17 @@ int main(void) {
 	can_message rcv_msg;
 	while(1)
     {	
-        printf("Press any key to start new game! \n");
+        printf("Press any key to a start new game! \n");
         getchar();
         start_game();
-        while(1) {
+        while(rcv_msg.id != GAME_OVER) {
             send_game_ctrls();
             rcv_msg = can_recieve();
-            switch(rcv_msg.id) {
-                case GAME_OVER:
-                    printf("You lost, game over! \n");
-                    break;
-            }
             _delay_ms(50);
         }
+    printf("You lost, game over! \n");
     }
-	return 0;
+    return 0;
 }
 
 
