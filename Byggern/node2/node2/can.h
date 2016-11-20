@@ -5,8 +5,9 @@
 #include "setup.h"
 #include "mcp2515.h"
 
+typedef enum {NEW_GAME, GAME_OVER, SCORE_UPDATE, GAME_CTRLS} canid;
 typedef struct {
-	uint8_t id;
+	canid id;
 	uint8_t length;
 	signed char data[8];
 } can_message;

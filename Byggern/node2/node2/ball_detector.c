@@ -44,3 +44,8 @@ void check_ball_lost(void) {
 uint8_t get_n_ball_lost(void) {
 	return n_ball_lost;
 }
+
+void set_n_ball_lost(uint8_t val) { 
+    n_ball_lost = val;
+}
+    

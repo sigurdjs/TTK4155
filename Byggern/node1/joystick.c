@@ -8,11 +8,12 @@ static joystick_direction prev_dir;
 static uint8_t zero_x;
 static uint8_t zero_y;
 
-void joy_init() {
+void joy_init(void) {
+    clear_bit(DDRD,PD5);
     adc_init();
 }
 
-void joy_calibrate() {
+void joy_calibrate(void) {
     zero_x = adc_read(JOY_X);
     zero_y = adc_read(JOY_Y);
 }
@@ -50,8 +51,10 @@ joystick_direction get_joy_direction(void) {
     return dir;
 }
 
-uint16_t get_slider_position(adc_channel channel) {
-	uint16_t pos = 100*((double) adc_read(channel))/255;
-	return pos;
+uint8_t get_slider_position(adc_channel channel) {
+	return adc_read(channel);
 }
 
+bool get_button_state(void) {
+    return PIND4;
+}

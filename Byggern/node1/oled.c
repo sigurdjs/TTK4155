@@ -51,21 +51,3 @@ void OLED_print_arrow(void) {
 	*oled_data = 0b00011000;
 }
 
-void OLED_go_to_page(uint8_t page) {
-	volatile uint8_t *oled_cmd = (uint8_t *) 0x1000;
-	*oled_cmd = 0xB0+page;
-}
-
-void OLED_clear_page(uint8_t page) {
-	volatile uint8_t *oled_data = (uint8_t *) 0x1200;
-	OLED_go_to_page(page);
-	for(uint8_t i = 0; i < 128; i++){
-		*oled_data = 0x00;
-	}
-}
-
-void OLED_reset(void) {
-	for (uint8_t i = 0; i < 8; i++) {
-		OLED_clear_page(i);
-	}
-}

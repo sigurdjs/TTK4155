@@ -15,6 +15,6 @@ void ball_detector_init(void);
 uint16_t adc_get_val(void);
 void check_ball_lost(void);
 uint8_t get_n_ball_lost(void);
-
+void set_n_ball_lost(uint8_t val);
 
 #endif

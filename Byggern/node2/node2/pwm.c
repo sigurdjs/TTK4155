@@ -32,6 +32,7 @@ void pwm_new_width(float dc_ms) {
 		OCR4A = F_CPU/64/1000*dc_ms;
 	}
 }
+
 void pwm_reset(void) {
 	OCR4A = F_CPU/64/1000*1.5;
 }
