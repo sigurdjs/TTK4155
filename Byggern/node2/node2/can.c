@@ -12,7 +12,6 @@ int can_init(void) {
 	
 	mcp2515_bit_modify(MCP_RXB0CTRL, 0b01100100, 0xFF);
 	mcp2515_bit_modify(MCP_CANINTE, 0x01, 1);
-	//can_set_mode(MODE_NORMAL);
 	return EXIT_SUCCESS;
 }
 
@@ -52,7 +51,6 @@ can_message can_recieve(void) {
 		for (int i = 0; i < message.length; i++) {
 			message.data[i] = (signed char) mcp2515_read(MCP_RXB0D0 + i);
 		}
-		//printf("Data: %d",message.data[0]);
 		mcp2515_bit_modify(MCP_CANINTF,0x01,0);
 	} else {
 		message.id = -1;

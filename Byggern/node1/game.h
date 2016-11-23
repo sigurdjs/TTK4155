@@ -2,6 +2,7 @@
 #define GAME_H_
 
 #include "can.h"
+#include "adc.h"
 #include "joystick.h"
 
 void start_game(void);

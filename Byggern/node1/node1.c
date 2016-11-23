@@ -20,15 +20,16 @@ int main(void) {
 	can_message rcv_msg;
 	while(1)
     {	
-        printf("Press any key to a start new game! \n");
+		printf("Press enter key to a start new game! \n");
         getchar();
-        start_game();
+		start_game();
         while(rcv_msg.id != GAME_OVER) {
-            send_game_ctrls();
+		    send_game_ctrls();
+			_delay_ms(50);
             rcv_msg = can_recieve();
-            _delay_ms(50);
         }
     printf("You lost, game over! \n");
+	rcv_msg.id = -1;
     }
     return 0;
 }

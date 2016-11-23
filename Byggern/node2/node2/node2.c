@@ -20,12 +20,13 @@ int main(void) {
             case NEW_GAME:
                 motor_calibrate();
                 set_n_ball_lost(0);
+				printf("New game \n");
                 break;
             case GAME_CTRLS:
                 update_devices(rcv_msg);
                 break;
         }
         check_game_status(N_LIVES);    //Sends a can_message with either alive msg or game over.
-    }
+	}
 	return 0;
 }

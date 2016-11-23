@@ -1,4 +1,5 @@
 #include "setup.h"
+#include <util/delay.h>
 #include "adc.h"
 
 void adc_init(void) {
@@ -12,6 +13,7 @@ uint8_t adc_read(adc_channel channel) {
 
 	*adc = 0x04 | channel;
 	wait_until_bit_is_clear(PINE,PINE0);
+	_delay_us(100);
 	return *adc;
 }
 

@@ -9,7 +9,8 @@ static uint8_t zero_x;
 static uint8_t zero_y;
 
 void joy_init(void) {
-    clear_bit(DDRD,PD5);
+    //set_bit(PORTD,PD4);
+	//clear_bit(DDRD,DDD4);
     adc_init();
 }
 
@@ -51,10 +52,16 @@ joystick_direction get_joy_direction(void) {
     return dir;
 }
 
-uint8_t get_slider_position(adc_channel channel) {
-	return adc_read(channel);
+signed char get_slider_position() {
+	signed char sl_val = adc_read(SLIDER_RIGHT);
+	return sl_val;
 }
 
-bool get_button_state(void) {
-    return PIND4;
-}
+/*bool get_button_state(void) {
+    uint8_t an_val = adc_read(BUTTON_RIGHT);
+	if (an_val < 10) {
+		return FALSE;
+	} else {
+		return TRUE;
+	}
+}*/

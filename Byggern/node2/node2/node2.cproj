@@ -139,6 +139,12 @@
     <Compile Include="dac.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="devices.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="devices.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="mcp2515.c">
       <SubType>compile</SubType>
     </Compile>

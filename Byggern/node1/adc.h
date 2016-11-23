@@ -1,12 +1,8 @@
-#ifndef _ADC_H_
-#define _ADC_H_
-
+#pragma once
 #include <avr/io.h>
 
-typedef enum {JOY_X, JOY_Y, SLIDER_LEFT, SLIDER_RIGHT} adc_channel;
+typedef enum {JOY_X, JOY_Y, BUTTON_RIGHT, SLIDER_RIGHT} adc_channel;
 void adc_init(void);
 uint8_t adc_read(adc_channel channel);
-
-#endif
 
 

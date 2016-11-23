@@ -1,7 +1,7 @@
 #include "ball_detector.h"
 
 static uint8_t n_ball_lost;
-static bool ball_flag;
+static uint8_t ball_flag;
 
 void adc_init(void) {
 	//	Set Vref to AVCC
@@ -35,6 +35,7 @@ uint8_t check_ball_lost(void) {
 		if (val < BALL_LOST && ball_flag == FALSE) {
 			n_ball_lost++;
 			ball_flag = TRUE;
+			printf("One live lost! \n");
 		}
 	} else {
 		ball_flag = FALSE;

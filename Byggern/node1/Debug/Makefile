@@ -38,10 +38,11 @@ SUBDIRS :=
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS +=  \
 ../adc.c \
-../main.c \
 ../can.c \
+../game.c \
 ../joystick.c \
 ../mcp2515.c \
+../node1.c \
 ../oled.c \
 ../spi.c \
 ../sram.c \
@@ -56,10 +57,11 @@ ASM_SRCS +=
 
 OBJS +=  \
 adc.o \
-main.o \
 can.o \
+game.o \
 joystick.o \
 mcp2515.o \
+node1.o \
 oled.o \
 spi.o \
 sram.o \
@@ -67,10 +69,11 @@ uart.o
 
 OBJS_AS_ARGS +=  \
 adc.o \
-main.o \
 can.o \
+game.o \
 joystick.o \
 mcp2515.o \
+node1.o \
 oled.o \
 spi.o \
 sram.o \
@@ -78,10 +81,11 @@ uart.o
 
 C_DEPS +=  \
 adc.d \
-main.d \
 can.d \
+game.d \
 joystick.d \
 mcp2515.d \
+node1.d \
 oled.d \
 spi.d \
 sram.d \
@@ -89,10 +93,11 @@ uart.d
 
 C_DEPS_AS_ARGS +=  \
 adc.d \
-main.d \
 can.d \
+game.d \
 joystick.d \
 mcp2515.d \
+node1.d \
 oled.d \
 spi.d \
 sram.d \
@@ -112,6 +117,8 @@ LINKER_SCRIPT_DEP+=
 
 
 # AVR32/GNU C Compiler
+
+
 
 
 

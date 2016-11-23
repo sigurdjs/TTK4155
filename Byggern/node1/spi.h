@@ -1,5 +1,4 @@
-#ifndef _SPI_H_
-#define _SPI_H_
+#pragma once
 
 #define DDR_SPI DDRB
 #define DD_SS PINB4
@@ -16,6 +15,3 @@ void spi_write(char data);
 char spi_read(void);
 void spi_select(void);
 void spi_deselect(void);
-
-
-#endif

@@ -40,6 +40,7 @@ C_SRCS +=  \
 ../can.c \
 ../ball_detector.c \
 ../dac.c \
+../devices.c \
 ../mcp2515.c \
 ../motor.c \
 ../node2.c \
@@ -59,6 +60,7 @@ OBJS +=  \
 can.o \
 ball_detector.o \
 dac.o \
+devices.o \
 mcp2515.o \
 motor.o \
 node2.o \
@@ -71,6 +73,7 @@ OBJS_AS_ARGS +=  \
 can.o \
 ball_detector.o \
 dac.o \
+devices.o \
 mcp2515.o \
 motor.o \
 node2.o \
@@ -83,6 +86,7 @@ C_DEPS +=  \
 can.d \
 ball_detector.d \
 dac.d \
+devices.d \
 mcp2515.d \
 motor.d \
 node2.d \
@@ -95,6 +99,7 @@ C_DEPS_AS_ARGS +=  \
 can.d \
 ball_detector.d \
 dac.d \
+devices.d \
 mcp2515.d \
 motor.d \
 node2.d \
@@ -117,6 +122,8 @@ LINKER_SCRIPT_DEP+=
 
 
 # AVR32/GNU C Compiler
+
+
 
 
 
